@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_boost_app/signUp_screen.dart';
+import 'package:email_validator/email_validator.dart';
 
 class MyHomePage extends StatefulWidget {
   @override
@@ -14,6 +15,7 @@ class _MyHomePageState extends State<MyHomePage> {
 
   bool emailIsEmpty = false;
   bool passwordIsEmpty = false;
+  bool emailErrorSyntax = false;
 
 
   validation(){
@@ -31,6 +33,14 @@ class _MyHomePageState extends State<MyHomePage> {
     else{
       passwordIsEmpty=false;
     }
+
+    if(EmailValidator.validate(emailController.text)==true){
+      emailErrorSyntax = false;
+    }
+    else{
+      emailErrorSyntax = true;
+    }
+
     print("after");
     print(emailIsEmpty);
     setState(() {});
@@ -53,6 +63,9 @@ class _MyHomePageState extends State<MyHomePage> {
                   // Padding(
                   //   padding: EdgeInsets.only(top: 150),
                   // ),
+
+                  
+                  
                   Container(
                     width: 100,
                     height: 100,
@@ -61,10 +74,22 @@ class _MyHomePageState extends State<MyHomePage> {
                     decoration: BoxDecoration(
                       color: Colors.blue,
                       borderRadius: BorderRadius.all(Radius.circular(50)),
+                      image: DecorationImage(
+                        image: NetworkImage("https://www.autocar.co.uk/sites/autocar.co.uk/files/styles/gallery_slide/public/images/car-reviews/first-drives/legacy/bmw-8-series-805_0.jpg?itok=e--SHpJj"),
+                        fit: BoxFit.cover
+
+                      ),
+                      // image: DecorationImage(
+                      //   image: AssetImage("assets/icons/OtlobLogo.jpg"),
+                      //   fit: BoxFit.cover
+                      // )
                     ),
                     alignment: Alignment.center,
-                    child: Text("hellowrold"),
+                   // child: Image.network("https://www.autocar.co.uk/sites/autocar.co.uk/files/styles/gallery_slide/public/images/car-reviews/first-drives/legacy/bmw-8-series-805_0.jpg?itok=e--SHpJj"),
                   ),
+
+                  
+                  
                   Container(
                     width: 300,
                     margin: EdgeInsets.only(top: 30),
@@ -74,6 +99,18 @@ class _MyHomePageState extends State<MyHomePage> {
                         color: Colors.green,
                       ),
                       decoration: InputDecoration(
+                        icon: IconButton(
+                          icon: Icon(Icons.email),
+                        ),
+
+                        // icon: IconButton(
+                        //   onPressed: (){
+                        //     print('hello from normal icon');
+                        //   },
+                        //   icon: Icon(Icons.email),
+                        // ),
+                            suffixIcon: Icon(Icons.email),
+                            prefixIcon: Icon(Icons.email),
                           border: OutlineInputBorder(
                             borderRadius: BorderRadius.all(Radius.circular(20)),
                             borderSide: BorderSide(
@@ -100,7 +137,9 @@ class _MyHomePageState extends State<MyHomePage> {
                     ),
                   ),
                   if(emailIsEmpty==true)
-                    Text("please enter your email",style: TextStyle(color: Colors.red),),
+                    Text("please enter your email",style: TextStyle(color: Colors.red,),),
+                  if(emailErrorSyntax==true)
+                    Text("please enter a valid email",style: TextStyle(color: Colors.red,),),
 
                   Container(
                     width: 300,
@@ -138,7 +177,6 @@ class _MyHomePageState extends State<MyHomePage> {
                   ),
                   if(passwordIsEmpty==true)
                     Text("please enter your password",style: TextStyle(color: Colors.red),),
-
                   InkWell(
                     onTap: (){
                       validation();
