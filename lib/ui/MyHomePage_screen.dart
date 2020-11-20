@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_boost_app/signUp_screen.dart';
+import 'file:///C:/Users/midom/AndroidStudioProjects/flutter_boost_app/lib/ui/signUp_screen.dart';
 import 'package:email_validator/email_validator.dart';
 
 class MyHomePage extends StatefulWidget {

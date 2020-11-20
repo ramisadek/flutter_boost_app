@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 
-import 'MyHomePage_screen.dart';
-import 'homeCard.dart';
+import 'ui/MyHomePage_screen.dart';
+import 'ui/gridview.dart';
+import 'cards/homeCard.dart';
+import 'ui/normalListview.dart';
 
 
 void main() {
@@ -14,7 +16,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       title: 'Flutter Boost app',
-      home: MyHomePage(),
+      home: NormalListView(),
     );
   }
 }

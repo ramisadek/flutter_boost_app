@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
 
-class HomeCard extends StatefulWidget {
+class FirstSession extends StatefulWidget {
   @override
-  _HomeCardState createState() => _HomeCardState();
+  _FirstSessionState createState() => _FirstSessionState();
 }
 
-class _HomeCardState extends State<HomeCard> {
+class _FirstSessionState extends State<FirstSession> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
