@@ -3,17 +3,20 @@ import 'package:flutter/material.dart';
 class HomeCard extends StatelessWidget {
 
   String title;
-  String supTitle ;
-  int price ;
-  String country ;
-  String imageUrl = 'https://ymimg1.b8cdn.com/resized/article/6192/pictures/4494717/listing_main_BMW_X7_Review__1_.jpg';
+  String supTitle;
+
+  double price;
+
+  String country;
+
+  String imageUrl;
 
   HomeCard({this.title, this.supTitle, this.price, this.country, this.imageUrl});
 
   @override
   Widget build(BuildContext context) {
     return Container(
-      width: MediaQuery.of(context).size.width *0.9,
+      width: MediaQuery.of(context).size.width * 0.9,
       height: 170,
       padding: EdgeInsets.symmetric(horizontal: 10),
       margin: EdgeInsets.symmetric(vertical: 10),
@@ -34,9 +37,16 @@ class HomeCard extends StatelessWidget {
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: <Widget>[
-                  Text(
-                    "$title",
-                    style: TextStyle(fontWeight: FontWeight.bold, fontSize: 22, color: Colors.red),
+                  SizedBox(
+                    width: MediaQuery
+                        .of(context)
+                        .size
+                        .width * 0.36,
+                    child: Text(
+                      "$title",
+                      style: TextStyle(fontWeight: FontWeight.bold, fontSize: 22, color: Colors.red),
+                      overflow: TextOverflow.ellipsis,
+                    ),
                   ),
                   Text("$supTitle", style: TextStyle(fontSize: 19, color: Colors.grey)),
                 ],
