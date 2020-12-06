@@ -1,8 +1,9 @@
-import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_boost_app/cards/api_home_card.dart';
 import 'package:flutter_boost_app/cards/luggage.dart';
 import 'package:flutter_boost_app/cards/midecals_card.dart';
+import 'package:flutter_boost_app/models/apiModel.dart';
+import 'package:flutter_boost_app/services/get_api_data.dart';
 
 class ApiPartOneScreen extends StatefulWidget {
   @override
@@ -10,28 +11,12 @@ class ApiPartOneScreen extends StatefulWidget {
 }
 
 class _ApiPartOneScreenState extends State<ApiPartOneScreen> {
-  String name;
-  int age;
-  String country;
-  String homeCountry;
-  bool isMuslim;
-  List luggage = List();
-  List midecals = List();
+  ApiModel apimodel = ApiModel();
 
   bool isLoading = true;
 
   getFromApiRequest() async {
-    Response response = await Dio().get("https://run.mocky.io/v3/701ff6f4-0181-47fe-9461-473f6d0aec92");
-    name = response.data["name"];
-    age = response.data["age"];
-    country = response.data["country"];
-    homeCountry = response.data["home_country"];
-    isMuslim = response.data["isMuslim"];
-    luggage = response.data["luggage"];
-    midecals = response.data["midecals"];
-
-    print(luggage);
-
+    apimodel = await ApiData().getApiData();
     isLoading = false;
     setState(() {});
   }
@@ -59,10 +44,10 @@ class _ApiPartOneScreenState extends State<ApiPartOneScreen> {
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       ApiHomeCard(
-                        name: "$name",
-                        age: age,
-                        country: "$country",
-                        home: "$homeCountry",
+                        name: "${apimodel.name}",
+                        age: apimodel.age,
+                        country: "${apimodel.country}",
+                        home: "${apimodel.homeCountry}",
                       ),
                       Padding(padding: EdgeInsets.symmetric(vertical: 5)),
                       Align(
@@ -77,14 +62,14 @@ class _ApiPartOneScreenState extends State<ApiPartOneScreen> {
                         primary: false,
                         shrinkWrap: true,
                         physics: NeverScrollableScrollPhysics(),
-                        itemCount: luggage.length,
+                        itemCount: apimodel.luggage.length,
                         itemBuilder: (context, index) {
                           return Padding(
                             padding: EdgeInsets.symmetric(vertical: 5),
                             child: LuggageCard(
-                              name: luggage[index]['name'],
-                              brand: luggage[index]['brand'],
-                              Category: luggage[index]['category'],
+                              name: apimodel.luggage[index]['name'],
+                              brand: apimodel.luggage[index]['brand'],
+                              Category: apimodel.luggage[index]['category'],
                             ),
                           );
                         },
@@ -102,14 +87,14 @@ class _ApiPartOneScreenState extends State<ApiPartOneScreen> {
                         primary: false,
                         shrinkWrap: true,
                         physics: NeverScrollableScrollPhysics(),
-                        itemCount: midecals.length,
+                        itemCount: apimodel.midecals.length,
                         itemBuilder: (context, index) {
                           return Padding(
                             padding: EdgeInsets.symmetric(vertical: 5),
                             child: MidecalsCard(
-                              name: midecals[index]['name'],
-                              price: midecals[index]['price'],
-                              Category: midecals[index]['category'],
+                              name: apimodel.midecals[index]['name'],
+                              price: apimodel.midecals[index]['price'],
+                              Category: apimodel.midecals[index]['category'],
                             ),
                           );
                         },
