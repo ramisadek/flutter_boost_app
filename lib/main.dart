@@ -1,6 +1,7 @@
 /// Flutter code sample for BottomNavigationBar
 import 'package:flutter/material.dart';
-import 'package:flutter_boost_app/ui/simple_request_screen.dart';
+
+import 'ui/api_request_part_one_screen.dart';
 
 void main() => runApp(MyApp());
 
@@ -12,7 +13,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       title: _title,
-      home: SimpleRequestScreen(),
+      home: ApiPartOneScreen(),
     );
   }
 }

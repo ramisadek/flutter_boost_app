@@ -20,6 +20,9 @@ class _SimpleRequestScreenState extends State<SimpleRequestScreen> {
     next = response.data['next'];
     pervoius = response.data['previous'];
     listOfResults = response.data['results'];
+    for (int i = 0; i < listOfResults.length; i++) {
+      listOfResults[i]['name'];
+    }
     isLoading = false;
     setState(() {});
   }

@@ -5,7 +5,7 @@ class HomeCard extends StatelessWidget {
   String title;
   String supTitle;
 
-  double price;
+  int price;
 
   String country;
 
@@ -25,8 +25,6 @@ class HomeCard extends StatelessWidget {
             color: Colors.blue,
           ),
           borderRadius: BorderRadius.all(Radius.circular(20))),
-
-
       child: Column(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: <Widget>[
