@@ -8,7 +8,7 @@ class ApiData {
   Future<ApiModel> getApiData() async {
     ApiModel apimodel = ApiModel();
 
-    Response response = await Dio().get("$url$getEndpoint");
+    Response response = await Dio().post("$url$getEndpoint", data: {"token": "31"});
 
     apimodel = ApiModel.fromJson(response.data);
 

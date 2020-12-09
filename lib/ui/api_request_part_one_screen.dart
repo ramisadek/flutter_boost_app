@@ -15,6 +15,8 @@ class _ApiPartOneScreenState extends State<ApiPartOneScreen> {
 
   bool isLoading = true;
 
+  var x;
+
   getFromApiRequest() async {
     apimodel = await ApiData().getApiData();
     isLoading = false;
@@ -67,9 +69,9 @@ class _ApiPartOneScreenState extends State<ApiPartOneScreen> {
                           return Padding(
                             padding: EdgeInsets.symmetric(vertical: 5),
                             child: LuggageCard(
-                              name: apimodel.luggage[index]['name'],
-                              brand: apimodel.luggage[index]['brand'],
-                              Category: apimodel.luggage[index]['category'],
+                              name: apimodel.luggage[index].name,
+                              brand: apimodel.luggage[index].brand,
+                              Category: apimodel.luggage[index].category,
                             ),
                           );
                         },
@@ -92,9 +94,9 @@ class _ApiPartOneScreenState extends State<ApiPartOneScreen> {
                           return Padding(
                             padding: EdgeInsets.symmetric(vertical: 5),
                             child: MidecalsCard(
-                              name: apimodel.midecals[index]['name'],
-                              price: apimodel.midecals[index]['price'],
-                              Category: apimodel.midecals[index]['category'],
+                              name: apimodel.midecals[index].name,
+                              price: apimodel.midecals[index].price,
+                              Category: apimodel.midecals[index].category,
                             ),
                           );
                         },
